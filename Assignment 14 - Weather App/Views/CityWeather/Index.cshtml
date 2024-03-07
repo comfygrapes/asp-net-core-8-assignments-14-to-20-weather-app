@@ -1,0 +1,11 @@
+﻿@model List<CityWeather>
+
+<div class="container">
+    <div class="flex justify-content-center margin-top-200">
+        @foreach (var weather in Model)
+        {
+            @(await Component.InvokeAsync<CityWeatherDetailsViewComponent>(new { weather = weather, isDetailed = false, }));
+        }
+    </div>
+</div>
+  

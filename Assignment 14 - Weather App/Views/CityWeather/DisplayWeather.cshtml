@@ -1,0 +1,14 @@
+﻿@model CityWeather
+
+<div class="container">
+    <div class="flex justify-content-center margin-top-200">
+        @{
+            @(await Component.InvokeAsync<CityWeatherDetailsViewComponent>(new { weather = Model, isDetailed = true, }));
+        }
+    </div>
+    <div class="flex margin-top justify-content-center">
+        <a href="/">
+            Back to Weather Home Page
+        </a>
+    </div>
+</div>

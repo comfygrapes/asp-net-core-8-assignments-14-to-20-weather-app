@@ -1,0 +1,44 @@
+﻿@model CityWeather
+
+@{
+    bool isDetailed = ViewBag.Detailed ?? Convert.ToBoolean(ViewData["Detailed"]);
+
+    string backgroundColor = string.Empty;
+
+    if (Model.TemperatureFahrenheit < 44) backgroundColor = "blue-back";
+    else if (Model.TemperatureFahrenheit <= 74) backgroundColor = "green-back";
+    else backgroundColor = "orange-back";
+}
+
+<div class="box justify-content-around @backgroundColor" style="display: flex; align-items: center;">
+    <div>
+        <h2>
+            @Model.CityName
+        </h2>
+        @if (!isDetailed)
+        {
+            <h4 class="text-dark-grey">
+                @Model.DateAndTime.ToShortTimeString()
+            </h4>
+            <a href="weather/@Model.CityUniqueCode" class="margin-top">
+                Details
+            </a>
+        }
+        else
+        {
+            <h4 class="text-grey margin-top">
+                @Model.DateAndTime.ToShortDateString()
+            </h4>
+            <h4 class="text-grey">
+                @Model.DateAndTime.ToShortTimeString()
+            </h4>
+        }
+    </div>
+    <div class="vl">
+    </div>
+    <div>
+        <h1>
+            @Model.TemperatureFahrenheit<sup>°F</sup>
+        </h1>
+    </div>
+</div>
